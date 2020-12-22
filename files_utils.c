@@ -15,7 +15,6 @@ size_t size = 0;
 int lineNumber = 0;
 line_t *lines;
 line_t *tmp;
-int i;
 
 if (filename == NULL)
 	return (0);
@@ -36,7 +35,6 @@ while (getline(&lineBuffer, &size, file) != -1)
 
 	(lines + lineNumber)->content = strdup(lineBuffer);
 	(lines + lineNumber)->number = lineNumber;
-	printf("-> %i %lu %s", lineNumber, sizeof(lines), (lines + lineNumber)->content);
 	lineNumber++;
 	tmp = lines;
 }
@@ -45,3 +43,4 @@ while (getline(&lineBuffer, &size, file) != -1)
 
 return lines;
 }
+

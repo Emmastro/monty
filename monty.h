@@ -59,8 +59,9 @@ void op_pall(stack_t **stack, unsigned int line_number);
 int op_pop(int operand);
 int op_swap(int operand);*/
 
-char **_split_line(char *line);
+char **split_line(char *line);
 void free_lines(line_t **lines);
+void (*get_op_func(char *s))(stack_t**, unsigned int);
 
 #endif
 

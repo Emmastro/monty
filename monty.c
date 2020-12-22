@@ -5,21 +5,26 @@ int main(int argc, char const *argv[])
 {
 
 	line_t *lines;
-	char *line;
+	char **line;
 	int i = 0;
+	stack_t *stack;
+	char *content;
+	unsigned int n = 0;
 
+	stack = NULL;
 
-	/*holds each line of the source code. We can now tokenize it and execute each instruction*/
-	
 	lines = textfile_to_array(argv[1]);
-	//printf("%lu %s\n", sizeof(lines), lines[0]->content);
 	if (lines == NULL)
 		return (0);
 
 	while ((lines + i)->content != NULL)
 	{
-		line = _split_line(lines + i);
-		
+		content = (lines + i)->content;
+		line = split_line(content);
+		if (line[1])
+			n = (unsigned int) atoi(line[1]);
+		get_op_func(line[0])(&stack, n);
+
 		i++;
 	}
 	
