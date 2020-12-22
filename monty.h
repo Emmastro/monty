@@ -42,5 +42,6 @@ typedef struct instruction_s
 /** Prototypes*/
 
 ssize_t read_textfile(const char *filename, size_t letters);
+void push(stack_t **stack, unsigned int new_line);
 
 #endif
