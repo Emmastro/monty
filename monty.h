@@ -43,4 +43,11 @@ typedef struct instruction_s
 
 ssize_t read_textfile(const char *filename);
 
+int op_push(int operand);
+int op_pall(int operand);
+int op_pint(int operand);
+int op_pop(int operand);
+int op_swap(int operand);
+
+
 #endif
