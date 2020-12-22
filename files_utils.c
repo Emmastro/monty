@@ -1,14 +1,14 @@
 #include "monty.h"
 
 /**
- * textfile_to_array - reads a text file and prints it to the POSIX standard output
+ * textfile_to_array - reads a text file and prints it to the POSIX
+ * standard output
  * @filename: pointer to the file name
  * Return:  the actual number of letters it could read and print
 */
 
 line_t *textfile_to_array(const char *filename)
 {
-
 FILE *file;
 char *lineBuffer;
 size_t size = 0;
@@ -25,7 +25,6 @@ lineBuffer = NULL;
 
 lines = NULL;
 
-/*getline will realloc lineBuffer size automatically to hold the full content of the line*/
 while (getline(&lineBuffer, &size, file) != -1)
 {
 	tmp = realloc(lines, sizeof(line_t) * (lineNumber + 1));
@@ -40,7 +39,5 @@ while (getline(&lineBuffer, &size, file) != -1)
 }
 
 (lines + lineNumber)->content = NULL;
-
-return lines;
+return (lines);
 }
-

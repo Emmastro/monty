@@ -1,12 +1,11 @@
 #include "monty.h"
 
 /**
- *op_push - adds elements to a stack
- *@stack - pointer to the first node/element in a stack
- *@line_number - the line within the stuck 
- *Return: nothing
+ * op_push - adds elements to a stack
+ * @stack: pointer to the first node/element in a stack
+ * @line_number: the line within the stuck
+ * Return: nothing
  */
-
 void op_push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new;
@@ -23,7 +22,7 @@ void op_push(stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		free(*stack);
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 
 	new->next = *stack;

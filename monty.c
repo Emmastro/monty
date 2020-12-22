@@ -27,7 +27,7 @@ int main(int argc, char const *argv[])
 
 		i++;
 	}
-	
+
 	(void)(argc);
 	free(lines);
 	return (0);
