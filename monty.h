@@ -42,14 +42,15 @@ typedef struct instruction_s
 /** Prototypes*/
 
 
-ssize_t read_textfile(const char *filename, size_t letters);
+
 ssize_t read_textfile(const char *filename);
-int op_push(int operand);
-int op_pall(int operand);
+void op_push(stack_t **stack, unsigned int line_number);
+void op_pall(stack_t **stack, unsigned int line_number);
 int op_pint(int operand);
 int op_pop(int operand);
 int op_swap(int operand);
 
+char **_split_line(char *line);
 
 #endif
 
