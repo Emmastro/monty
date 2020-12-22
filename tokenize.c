@@ -1,12 +1,12 @@
 #include "monty.h"
 /**
- *_split_linr - parse file into a list of arguments
+ *split_line - parse file into a list of arguments
  *@line - pointer to the line to be tokenized
- *Return: returns a pointer to the first tokem found in thr string
+ *Return: returns a pointer to the first token found in the string
  */
 #define _TOK_BUFSIZE 64
 #define _TOK_DELIM " \t\r\n\a"
-char **_split_line(char *line)
+char **split_line(char *line)
 {
 	int bufsize = _TOK_BUFSIZE, position = 0;
 	char **tokens = malloc(bufsize * sizeof(char *));

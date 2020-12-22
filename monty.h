@@ -20,9 +20,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -35,20 +35,29 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/** Prototypes*/
+/**
+ * struct line_s - line content and its number
+ * @content: line content
+ * @number: line number 
+ *
+ * Description: stores line of the monty source code
+ */
+typedef struct line_s
+{
+	char *content;
+	int number;
+} line_t;
 
-
-
-ssize_t read_textfile(const char *filename);
+line_t **textfile_to_array(const char *filename);
 void op_push(stack_t **stack, unsigned int line_number);
 void op_pall(stack_t **stack, unsigned int line_number);
-int op_pint(int operand);
+/*int op_pint(int operand);
 int op_pop(int operand);
-int op_swap(int operand);
+int op_swap(int operand);*/
 
 char **_split_line(char *line);
 

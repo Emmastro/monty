@@ -1,36 +1,41 @@
 #include "monty.h"
-#include <fcntl.h>
 
 /**
- * read_textfile - reads a text file and prints it to the POSIX standard output
+ * textfile_to_array - reads a text file and prints it to the POSIX standard output
  * @filename: pointer to the file name
  * Return:  the actual number of letters it could read and print
 */
 
-ssize_t read_textfile(const char *filename)
+line_t **textfile_to_array(const char *filename)
 {
 
 FILE *file;
 char *lineBuffer;
 size_t size = 0;
+int lineNumber = 1;
+line_t *line;
+line_t **lines;
 
 if (filename == NULL)
 	return (0);
 
 file = fopen(filename, "r");
 
-lineBuffer = NULL; //malloc(sizeof(char));
+lineBuffer = NULL;
 
-//getline will realloc lineBuffer size automatically to hold the full content of the line
+lines = NULL;
 
+/*getline will realloc lineBuffer size automatically to hold the full content of the line*/
 while (getline(&lineBuffer, &size, file) != -1)
 {
-    printf("%s", lineBuffer);
-    //Break down the line to get the opcode and operand
-    //line = strtok(buffer, "\n");
+	lines = realloc(lines, sizeof(line_t) * lineNumber);
+	line = malloc(sizeof(line_t));
+	line->content = lineBuffer;
+	line->number = lineNumber;
+	lines[lineNumber] = line;
+	lineNumber++;
 }
+//TODO: lines should be NULL terminated
 
-free(lineBuffer);
-
-return (0);
+return lines;
 }
