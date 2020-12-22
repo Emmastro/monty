@@ -60,6 +60,7 @@ int op_pop(int operand);
 int op_swap(int operand);*/
 
 char **_split_line(char *line);
+void free_lines(line_t **lines);
 
 #endif
 
