@@ -1,11 +1,11 @@
 #include "monty.h"
+#define BUFSIZE 64
 
 int main(int argc, char const *argv[])
 {
-	ssize_t n;
-
-
-	n = read_textfile(argv[1], 114);
+	//ssize_t n;
+	(void)(argc);
+	read_textfile(argv[1]);
 
 	return (0);
 }
