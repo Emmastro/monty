@@ -4,9 +4,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unstd.h>
+#include <unistd.h>
 #include <stdbool.h>
 #include <ctype.h>
+#include <fcntl.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -39,3 +40,7 @@ typedef struct instruction_s
 } instruction_t;
 
 /** Prototypes*/
+
+ssize_t read_textfile(const char *filename, size_t letters);
+
+#endif
