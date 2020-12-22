@@ -4,48 +4,33 @@
 /**
  * read_textfile - reads a text file and prints it to the POSIX standard output
  * @filename: pointer to the file name
- * @letters: the number of letters it should read and print
  * Return:  the actual number of letters it could read and print
 */
 
-ssize_t read_textfile(const char *filename, size_t letters)
+ssize_t read_textfile(const char *filename)
 {
 
-int file;
-ssize_t rcount;
-char *buffer;
-char *line;
+FILE *file;
+char *lineBuffer;
+size_t size = 0;
 
 if (filename == NULL)
 	return (0);
 
-file = open(filename, O_RDWR);
-if (file == -1)
-	return (0);
+file = fopen(filename, "r");
 
-buffer = malloc(sizeof(char) * letters);
-if (buffer == NULL)
+lineBuffer = NULL; //malloc(sizeof(char));
+
+//getline will realloc lineBuffer size automatically to hold the full content of the line
+
+while (getline(&lineBuffer, &size, file) != -1)
 {
-	free(buffer);
-	return (0);
+    printf("%s", lineBuffer);
+    //Break down the line to get the opcode and operand
+    //line = strtok(buffer, "\n");
 }
 
-rcount = read(file, buffer, letters);
-if (rcount == -1)
-	return (0);
-
-line = strtok(buffer, "\n");
-for (int i = 0; line && i < 2; i++)
-{
-    printf("%s \n", line);
-    //TODO: we need to break this line further into 2 part, opcode and operand
-    //TODO: Save this data on the instruction_t type def for further processing
-    line = strtok(NULL, "\n");
-}
-
-free(buffer);
-
-close(file);
+free(lineBuffer);
 
 return (0);
 }
