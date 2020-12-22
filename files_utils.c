@@ -12,8 +12,9 @@ ssize_t read_textfile(const char *filename, size_t letters)
 {
 
 int file;
-ssize_t rcount, wcount;
+ssize_t rcount;
 char *buffer;
+char *line;
 
 if (filename == NULL)
 	return (0);
@@ -33,14 +34,18 @@ rcount = read(file, buffer, letters);
 if (rcount == -1)
 	return (0);
 
-wcount = write(STDOUT_FILENO, buffer, rcount);
-
-if (wcount == -1 || rcount != wcount)
-	return (0);
+line = strtok(buffer, "\n");
+for (int i = 0; line && i < 2; i++)
+{
+    printf("%s \n", line);
+    //TODO: we need to break this line further into 2 part, opcode and operand
+    //TODO: Save this data on the instruction_t type def for further processing
+    line = strtok(NULL, "\n");
+}
 
 free(buffer);
 
 close(file);
 
-return (wcount);
+return (0);
 }
