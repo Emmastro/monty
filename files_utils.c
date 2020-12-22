@@ -39,7 +39,7 @@ for (int i = 0; line && i < 2; i++)
 {
     printf("%s \n", line);
     //TODO: we need to break this line further into 2 part, opcode and operand
-    //TODO: Save this data on the instruction_t type def for further processing
+    //TODO: use this data with instruction_t type def to execute the instruction
     line = strtok(NULL, "\n");
 }
 
