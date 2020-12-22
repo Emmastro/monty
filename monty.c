@@ -4,8 +4,10 @@
 int main(int argc, char const *argv[])
 {
 
-	line_t **lines;
+	line_t *lines;
+	char *line;
 	int i = 0;
+
 
 	/*holds each line of the source code. We can now tokenize it and execute each instruction*/
 	
@@ -14,25 +16,14 @@ int main(int argc, char const *argv[])
 	if (lines == NULL)
 		return (0);
 
-	while (lines[i] != NULL)
+	while ((lines + i)->content != NULL)
 	{
-		printf("%i\n", i);
-		printf("%s", lines[i]->content);
+		line = _split_line(lines + i);
+		
 		i++;
 	}
 	
 	(void)(argc);
-	free_lines(lines);
-	return (0);
-}
-
-void free_lines(line_t **lines)
-{
-	int i = 0;
-	while (lines[i] != NULL)
-	{
-		free(lines[i]);
-		i++;
-	}
 	free(lines);
+	return (0);
 }

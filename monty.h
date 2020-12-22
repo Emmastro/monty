@@ -52,7 +52,7 @@ typedef struct line_s
 	int number;
 } line_t;
 
-line_t **textfile_to_array(const char *filename);
+line_t *textfile_to_array(const char *filename);
 void op_push(stack_t **stack, unsigned int line_number);
 void op_pall(stack_t **stack, unsigned int line_number);
 /*int op_pint(int operand);
