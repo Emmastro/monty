@@ -1,8 +1,14 @@
 #include "monty.h"
 #define BUFSIZE 64
 
-char* operand;
+char *operand;
 
+/**
+ * main - monty interpreter
+ * @argc: int
+ * @argv: list of arguments
+ * Return: nothing
+ */
 int main(int argc, char const *argv[])
 {
 
@@ -24,7 +30,7 @@ int main(int argc, char const *argv[])
 		content = (lines + line_number)->content;
 		line = split_line(content);
 		operand = line[1];
-		get_op_func(line[0])(&stack, line_number);
+		get_op_func(line[0])(&stack, line_number + 1);
 
 		line_number++;
 	}

@@ -66,5 +66,7 @@ char **split_line(char *line);
 void free_lines(line_t **lines);
 void (*get_op_func(char *s))(stack_t**, unsigned int);
 
+int _atoi(char *s, int* n);
+
 #endif
 

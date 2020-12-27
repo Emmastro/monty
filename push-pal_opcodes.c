@@ -9,7 +9,7 @@
 void op_push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new;
-	unsigned int n;
+	int n;
 
 	if (stack == NULL)
 	{
@@ -17,13 +17,12 @@ void op_push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	if (operand == NULL)
+	if (operand == NULL || _atoi(operand, &n) == -1)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	n = (unsigned int) atoi(operand);
-
+	
 	new = malloc(sizeof(stack_t));
 
 	if (new == NULL)
