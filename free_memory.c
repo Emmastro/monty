@@ -31,3 +31,16 @@ void free_lines(line_t *lines)
 	}
 	free(lines);
 }
+
+
+void free_line(char **line)
+{
+    int i = 0;
+
+	while (line[i] != NULL)
+	{
+		//free(line[i]);
+        i++;
+	}
+	free(line);
+}

@@ -33,8 +33,8 @@ lines = NULL;
 
 while (getline(&lineBuffer, &size, file) != -1)
 {
-	printf("%s", lineBuffer);
-	tmp = realloc(lines, sizeof(line_t) * (lineNumber + 1));
+
+	tmp = realloc(lines, sizeof(line_t) * (lineNumber + 2));
 	if (tmp == NULL)
 		return (0);
 	lines = tmp;
@@ -44,12 +44,8 @@ while (getline(&lineBuffer, &size, file) != -1)
 	lineNumber++;
 	tmp = lines;
 }
-printf("%i\n", lineNumber);
-tmp = realloc(lines, sizeof(line_t) * (lineNumber + 1));
-if (tmp == NULL)
-	return (0);
-lines = tmp;
 
+free(lineBuffer);
 (lines + lineNumber)->content = NULL;
 return (lines);
 }

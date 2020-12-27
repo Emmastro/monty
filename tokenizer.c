@@ -4,35 +4,33 @@
  *@line - pointer to the line to be tokenized
  *Return: returns a pointer to the first token found in the string
  */
-#define _TOK_BUFSIZE 64
+/*#define _TOK_BUFSIZE 64*/
+
 #define _TOK_DELIM " \t\r\n\a"
 char **split_line(char *line)
 {
-	int bufsize = _TOK_BUFSIZE, position = 0;
-	char **tokens = malloc(bufsize * sizeof(char *));
+	/*int bufsize = _TOK_BUFSIZE;*/
+	int position = 0;
+	char **tokens = NULL;
+	char **tmp = NULL;
 	char *token;
 
-	if (!tokens)
-	{
-		fprintf(stderr, "sh: allocation error\n");
-		exit(EXIT_FAILURE);
-	}
 	token = strtok(line, _TOK_DELIM);
+	
 	while (token != NULL)
 	{
-		tokens[position] = token;
-		position++;
-		if (position >= bufsize)
+		tmp = realloc(tokens, sizeof(char*) * (position + 2));
+		if (tmp == NULL)
 		{
-			bufsize += _TOK_BUFSIZE;
-			tokens = realloc(tokens, bufsize * sizeof(char *));
-			if (!tokens)
-			{
-				fprintf(stderr, "sh: allocation error\n");
-				exit(EXIT_FAILURE);
-			}
+			fprintf(stderr, "sh: allocation error\n");
+			exit(EXIT_FAILURE);
 		}
+		tokens = tmp;
+
+		//tokens[position] = malloc(sizeof(char*));
+		tokens[position] = token;
 		token = strtok(NULL, _TOK_DELIM);
+		position++;
 	}
 	tokens[position] = NULL;
 	return (tokens);

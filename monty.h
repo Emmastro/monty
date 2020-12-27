@@ -69,5 +69,6 @@ void free_lines(line_t *head);
 void free_stack(stack_t *head);
 int _atoi(char *s, int* n);
 
+void free_line(char **line);
 #endif
 
