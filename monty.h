@@ -9,6 +9,8 @@
 #include <ctype.h>
 #include <fcntl.h>
 
+extern char* operand;
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -51,6 +53,7 @@ typedef struct line_s
 	char *content;
 	int number;
 } line_t;
+
 
 line_t *textfile_to_array(const char *filename);
 void op_push(stack_t **stack, unsigned int line_number);

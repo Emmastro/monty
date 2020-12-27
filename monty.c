@@ -1,15 +1,16 @@
 #include "monty.h"
 #define BUFSIZE 64
 
+char* operand;
+
 int main(int argc, char const *argv[])
 {
 
 	line_t *lines;
 	char **line;
-	int i = 0;
+	int line_number;
 	stack_t *stack;
 	char *content;
-	unsigned int n = 0;
 
 	stack = NULL;
 
@@ -17,15 +18,15 @@ int main(int argc, char const *argv[])
 	if (lines == NULL)
 		return (0);
 
-	while ((lines + i)->content != NULL)
+	line_number = 0;
+	while ((lines + line_number)->content != NULL)
 	{
-		content = (lines + i)->content;
+		content = (lines + line_number)->content;
 		line = split_line(content);
-		if (line[1])
-			n = (unsigned int) atoi(line[1]);
-		get_op_func(line[0])(&stack, n);
+		operand = line[1];
+		get_op_func(line[0])(&stack, line_number);
 
-		i++;
+		line_number++;
 	}
 
 	(void)(argc);
