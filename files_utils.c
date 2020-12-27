@@ -21,6 +21,9 @@ if (filename == NULL)
 
 file = fopen(filename, "r");
 
+if (file == NULL)
+	return (0);
+
 lineBuffer = NULL;
 
 lines = NULL;
