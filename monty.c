@@ -37,7 +37,7 @@ int main(int argc, char const *argv[])
 		line = split_line(content);
 		operand = line[1];
 		get_op_func(line[0])(&stack, line_number + 1);
-		free_line(line);
+		free(line);
 		line_number++;
 	}
 
