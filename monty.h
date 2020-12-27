@@ -58,9 +58,9 @@ typedef struct line_s
 line_t *textfile_to_array(const char *filename);
 void op_push(stack_t **stack, unsigned int line_number);
 void op_pall(stack_t **stack, unsigned int line_number);
-/*int op_pint(int operand);
-int op_pop(int operand);
-int op_swap(int operand);*/
+void op_pint(stack_t **stack, unsigned int line_number);
+void op_pop(stack_t **stack, unsigned int line_number);
+void op_swap(stack_t **stack, unsigned int line_number);
 
 char **split_line(char *line);
 void (*get_op_func(char *s))(stack_t**, unsigned int);
