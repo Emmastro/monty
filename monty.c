@@ -20,6 +20,12 @@ int main(int argc, char const *argv[])
 
 	stack = NULL;
 
+	if (argc == 1)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
+	
 	lines = textfile_to_array(argv[1]);
 	if (lines == NULL)
 		return (0);
@@ -35,7 +41,6 @@ int main(int argc, char const *argv[])
 		line_number++;
 	}
 
-	(void)(argc);
 	free(lines);
 	return (0);
 }
