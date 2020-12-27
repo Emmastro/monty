@@ -25,7 +25,7 @@ int main(int argc, char const *argv[])
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	
+
 	lines = textfile_to_array(argv[1]);
 	if (lines == NULL)
 		return (0);
