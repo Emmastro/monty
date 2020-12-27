@@ -64,10 +64,10 @@ void op_swap(stack_t **stack, unsigned int line_number);
 line_t **textfile_to_array(const char *filename);
 void op_push(stack_t **stack, unsigned int line_number);
 void op_pall(stack_t **stack, unsigned int line_number);
+void free_stack(stack_t **stack);
 /*int op_pint(int operand);
 int op_pop(int operand);
 int op_swap(int operand);*/
->>>>>>> 70078cb1c08841746de38f0736b239cf8ab0708b
 
 char **_split_line(char *line);
 

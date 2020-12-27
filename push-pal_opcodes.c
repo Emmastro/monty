@@ -22,7 +22,7 @@ void op_push(stack_t **stack, unsigned int line_number)
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		free(*stack);
+		free_stack(stack);
 		exit (EXIT_FAILURE);
 	}
 
@@ -51,5 +51,23 @@ void op_pall(stack_t **stack, unsigned int line_number)
 	{
 		printf("%d\n", temp->n);
 		temp = temp->next;
+	}
+}
+/**
+ *free_stack - frees all nodes in a stack
+ *@stack: pointer to the head node pointer of a stack
+ *Return: void
+ */
+void free_stack(stack_t **stack)
+{
+  stack_t *temp = NULL;
+
+  if (stack == NULL || *stack == NULL)
+    return;
+  while (*stack != NULL)
+	{
+	  temp = (*stack)->next;
+	  free(*stack);
+	  *stack = temp;
 	}
 }
