@@ -22,7 +22,10 @@ if (filename == NULL)
 file = fopen(filename, "r");
 
 if (file == NULL)
-	return (0);
+{
+	fprintf(stderr, "Error: Can't open file %s\n", filename);
+	exit(EXIT_FAILURE);
+}
 
 lineBuffer = NULL;
 
