@@ -36,7 +36,10 @@ while (getline(&lineBuffer, &size, file) != -1)
 
 	tmp = realloc(lines, sizeof(line_t) * (lineNumber + 2));
 	if (tmp == NULL)
+	{
+		fclose(file);
 		return (0);
+	}
 	lines = tmp;
 
 	(lines + lineNumber)->content = strdup(lineBuffer);
@@ -47,5 +50,6 @@ while (getline(&lineBuffer, &size, file) != -1)
 
 free(lineBuffer);
 (lines + lineNumber)->content = NULL;
+fclose(file);
 return (lines);
 }
