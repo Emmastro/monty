@@ -11,13 +11,12 @@ char *operand;
  */
 int main(int argc, char const *argv[])
 {
-
 	line_t *lines;
 	char **line;
 	int line_number;
 	stack_t *stack;
 	char *content;
-	void (*func) (stack_t**, unsigned int);
+	void (*func)(stack_t**, unsigned int);
 
 	stack = NULL;
 
@@ -26,7 +25,6 @@ int main(int argc, char const *argv[])
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-
 	lines = textfile_to_array(argv[1]);
 	if (lines == NULL)
 		return (0);
@@ -37,7 +35,7 @@ int main(int argc, char const *argv[])
 		content = (lines + line_number)->content;
 		line = split_line(content);
 		operand = line[1];
-		
+
 		func = get_op_func(line[0]);
 		if (func == NULL)
 		{
