@@ -16,14 +16,12 @@ void (*get_op_func(char *s))(stack_t**, unsigned int)
 	instruction_t ops[] = {
 		{"push", op_push},
 		{"pall", op_pall},
-		//{"pint", op_pint},
-		//{"pop", op_pop},
-		//{"swap", op_swap},
+		{"pint", op_pint}, /*Add new functions on here*/
 		{NULL, NULL}
 	};
 	int i = 0;
 
-	while (ops[i].opcode != NULL && *(ops[i].opcode) != *s)
+	while (ops[i].opcode != NULL && strcmp((ops[i].opcode), s))
 		i++;
 	return (ops[i].f);
 }

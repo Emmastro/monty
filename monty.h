@@ -9,6 +9,8 @@
 #include <ctype.h>
 #include <fcntl.h>
 
+extern char* operand;
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -51,25 +53,21 @@ typedef struct line_s
 	char *content;
 	int number;
 } line_t;
-/**
-ssize_t read_textfile(const char *filename);
-void (*get_op_func(char *s))(stack_t **, unsigned int);
+
+line_t *textfile_to_array(const char *filename);
 void op_push(stack_t **stack, unsigned int line_number);
 void op_pall(stack_t **stack, unsigned int line_number);
 void op_pint(stack_t **stack, unsigned int line_number);
 void op_pop(stack_t **stack, unsigned int line_number);
 void op_swap(stack_t **stack, unsigned int line_number);
-=======
-  */
-line_t **textfile_to_array(const char *filename);
-void op_push(stack_t **stack, unsigned int line_number);
-void op_pall(stack_t **stack, unsigned int line_number);
-void free_stack(stack_t **stack);
-/*int op_pint(int operand);
-int op_pop(int operand);
-int op_swap(int operand);*/
 
-char **_split_line(char *line);
+char **split_line(char *line);
+void (*get_op_func(char *s))(stack_t**, unsigned int);
+>>>>>>> 3d43bc3e39e4ed43c6fb733dabcdc14392cf3c4a
+
+void free_lines(line_t *head);
+void free_stack(stack_t *head);
+int _atoi(char *s, int* n);
 
 #endif
 
