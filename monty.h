@@ -63,7 +63,7 @@ void op_swap(stack_t **stack, unsigned int line_number);
 
 char **split_line(char *line);
 void (*get_op_func(char *s))(stack_t**, unsigned int);
->>>>>>> 3d43bc3e39e4ed43c6fb733dabcdc14392cf3c4a
+
 
 void free_lines(line_t *head);
 void free_stack(stack_t *head);
