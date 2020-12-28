@@ -17,6 +17,7 @@ int main(int argc, char const *argv[])
 	int line_number;
 	stack_t *stack;
 	char *content;
+	void (*func) (stack_t**, unsigned int);
 
 	stack = NULL;
 
@@ -36,7 +37,20 @@ int main(int argc, char const *argv[])
 		content = (lines + line_number)->content;
 		line = split_line(content);
 		operand = line[1];
-		get_op_func(line[0])(&stack, line_number + 1);
+		
+		func = get_op_func(line[0]);
+		if (func == NULL)
+		{
+			/*TODO: Refactor: Edit more efifcient way to free memory on exit*/
+			free(line);
+			free_stack(stack);
+			free_lines(lines);
+
+			fprintf(stderr, "L%d: unknown instruction\n", line_number);
+			exit(EXIT_FAILURE);
+		}
+
+		func(&stack, line_number + 1);
 		free(line);
 		line_number++;
 	}
