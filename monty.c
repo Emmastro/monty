@@ -40,11 +40,10 @@ int main(int argc, char const *argv[])
 		if (func == NULL)
 		{
 			/*TODO: Refactor: Edit more efifcient way to free memory on exit*/
+			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, line[0]);
 			free(line);
 			free_stack(stack);
 			free_lines(lines);
-
-			fprintf(stderr, "L%d: unknown instruction\n", line_number);
 			exit(EXIT_FAILURE);
 		}
 
