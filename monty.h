@@ -16,8 +16,6 @@
 #define MONTY_ERROR_PINT_EMPTY 4
 #define MONTY_ERROR_POP_EMPTY 5
 
-#define MONTY_STACK 0
-#define MONTY_QUEUE 1
 
 typedef struct monty_s{
   char  *save_ptr;
